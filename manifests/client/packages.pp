@@ -11,7 +11,7 @@
 # Copyright 2012, 2013 Nedap Steppingstone.
 #
 class icinga::client::packages (
-  $p_nagios_nrpe               = $::icinga::client::package_nagios_nrpe_server,
+  $p_nagios_nrpe               = $::icinga::client::package_nagios_nrpe,
   $p_nagios_plugins            = $::icinga::client::package_nagios_plugins,
   $p_nagios_plugins_all        = $::icinga::client::package_nagios_plugins_all,
 ) {
