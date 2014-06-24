@@ -16,7 +16,7 @@ class icinga::client::packages (
   $p_nagios_plugins_all        = $::icinga::client::package_nagios_plugins_all,
 ) {
 
-  package { $p_nagios_nrpe_server:
+  package { $p_nagios_nrpe:
     ensure => latest,
     notify => Class['icinga::client::services'],
   }
