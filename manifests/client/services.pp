@@ -15,7 +15,7 @@ class icinga::client::services (
   $s_nrpe_pattern = $::icinga::client::service_nagios_nrpe_pattern,
 ) {
 
-  service { $s_nrpe_server:
+  service { $s_nrpe:
     ensure     => running,
     pattern    => $s_nrpe_pattern,
     enable     => true,
