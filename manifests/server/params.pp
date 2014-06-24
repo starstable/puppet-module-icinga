@@ -13,15 +13,16 @@
 class icinga::server::params {
   case $::osfamily {
     'Debian': {
-      $package_nrpe_plugin      = 'nagios-nrpe-plugin'
-      $package_icinga           = 'icinga'
-      $package_icinga_cgi       = 'icinga-cgi'
-      $package_icinga_doc       = 'icinga-doc'
-      $package_nagios_images    = 'nagios-images'
-      $package_libjs_jquery_ui  = 'libjs-jquery-ui'
+      $package_nrpe_plugin        = 'nagios-plugins-nrpe'
+      $package_icinga             = 'icinga'
+      $package_icinga_cgi         = 'icinga-gui'
+      $package_icinga_doc         = 'icinga-doc'
+      $package_icinga_idoutils    = 'icinga-idoutils'
+      $package_icinga_idoutils_db = 'icinga-idoutils-libdbi-mysql'
+      
       $service_icinga           = 'icinga'
       $dir_icinga               = '/etc/icinga'
-      $dir_nagios_plugins       = '/usr/lib/nagios/plugins'
+      $dir_nagios_plugins       = '/usr/lib64/nagios/plugins'
       $dir_objects              = "${dir_icinga}/objects"
       $dir_modules              = "${dir_icinga}/modules"
       $dir_stylesheets          = "${dir_icinga}/stylesheets"
@@ -32,9 +33,9 @@ class icinga::server::params {
       $dir_htdocs               = '/usr/share/icinga/htdocs'
       $dir_cgi                  = '/usr/lib/cgi-bin/icinga'
       $dir_icinga_plugins       = '/usr/share/icinga/scripts'
-      $dir_icinga_eventhandlers = '/usr/share/icinga/plugins/eventhandlers'
-      $webserver_user           = 'www-data'
-      $webserver_group          = 'www-data'
+      $dir_icinga_eventhandlers = '/usr/lib64/icinga/eventhandlers'
+      $webserver_user           = 'apache'
+      $webserver_group          = 'apache'
       $dir_icinga_log           = '/var/log/icinga'
 
       # following is used to configure icinga.cfg
@@ -193,7 +194,7 @@ class icinga::server::params {
       $date_format                                 = 'iso8601'
       # default not set
       $use_timezone                                = undef
-      $p1_file                                     = '/usr/lib/icinga/p1.pl'
+      $p1_file                                     = '/usr/lib64/icinga/p1.pl'
       $enable_embedded_perl                        = 0
       $use_embedded_perl_implicitly                = 1
       $stalking_event_handlers_for_hosts           = 0
@@ -205,7 +206,7 @@ class icinga::server::params {
       # I place a ' here to fix syntax highlight
       $use_regexp_matching                         = 0
       $use_true_regexp_matching                    = 0
-      $admin_email                                 = 'root@localhost'
+      $admin_email                                 = 'tech@starstable.com'
       $admin_pager                                 = 'pageroot@localhost'
       $daemon_dumps_core                           = 0
       $use_large_installation_tweaks               = 0

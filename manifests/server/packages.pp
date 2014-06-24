@@ -15,8 +15,8 @@ class icinga::server::packages (
   $p_icinga             = $::icinga::server::package_icinga,
   $p_icinga_cgi         = $::icinga::server::package_icinga_cgi,
   $p_icinga_doc         = $::icinga::server::package_icinga_doc,
-  $p_nagios_images      = $::icinga::server::package_nagios_images,
-  $p_libjs_jquery_ui    = $::icinga::server::package_libjs_jquery_ui,
+  $p_icinga_idoutils    = $::icinga::server::package_icinga_idoutils,
+  $p_icinga_idoutils_db = $::icinga::server::package_icinga_idoutils_db,
 ) {
 
   package { $p_nagios_nrpe_plugin:
@@ -31,7 +31,8 @@ class icinga::server::packages (
     $p_icinga,
     $p_icinga_cgi,
     $p_icinga_doc,
-    $p_libjs_jquery_ui,
+    $p_icinga_idoutils,
+    $p_icinga_idoutils_db,
   ]:
     ensure  => latest,
     notify  => Class['icinga::server::services'],

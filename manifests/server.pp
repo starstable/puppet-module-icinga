@@ -34,8 +34,8 @@ class icinga::server (
   $enable_notifications       = true,
   $icinga_configure_webserver = false,
   $icinga_vhostname           = '',
-  $icinga_webserver           = 'apache2',
-  $icinga_webserver_port      = 9000,
+  $icinga_webserver           = 'apache',
+  $icinga_webserver_port      = 80,
   $dir_webserver_log          = $::icinga::server::params::dir_icinga_log,
 
   $package_nrpe_plugin      = $::icinga::server::params::package_nrpe_plugin,

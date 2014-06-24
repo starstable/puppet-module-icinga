@@ -22,12 +22,9 @@
 class icinga::client (
   $icinga_servers = '',
 
-  $package_libnagios_perl             = $::icinga::client::params::package_libnagios_perl,
   $package_nagios_nrpe_server         = $::icinga::client::params::package_nagios_nrpe_server,
-  $package_nagios_plugins_basic       = $::icinga::client::params::package_nagios_plugins_basic,
-  $package_nagios_plugins_standard    = $::icinga::client::params::package_nagios_plugins_standard,
-  $package_nagios_plugins_contrib     = $::icinga::client::params::package_nagios_plugins_contrib,
-  $package_nagios_plugin_check_multi  = $::icinga::client::params::package_nagios_plugin_check_multi,
+  $package_nagios_plugins             = $::icinga::client::params::package_nagios_plugins,
+  $package_nagios_plugins_all         = $::icinga::client::params::package_nagios_plugins_all,
   $service_nagios_nrpe_server         = $::icinga::client::params::service_nagios_nrpe_server,
   $service_nagios_nrpe_server_pattern = $::icinga::client::params::service_nagios_nrpe_server_pattern,
   $dir_nagios                         = $::icinga::client::params::dir_nagios,

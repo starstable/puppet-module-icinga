@@ -1,8 +1,6 @@
 class icinga::server::users {
-
-  user { 'nagios':
+  user { 'icinga':
     ensure => present,
     system => true,
   }
-
 }

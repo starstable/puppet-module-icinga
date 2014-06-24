@@ -11,8 +11,8 @@
 # Copyright 2012, 2013 Nedap Steppingstone.
 #
 class icinga::client::services (
-  $s_nrpe_server  = $::icinga::client::service_nagios_nrpe_server,
-  $s_nrpe_pattern = $::icinga::client::service_nagios_nrpe_server_pattern,
+  $s_nrpe         = $::icinga::client::service_nagios_nrpe,
+  $s_nrpe_pattern = $::icinga::client::service_nagios_nrpe_pattern,
 ) {
 
   service { $s_nrpe_server:
@@ -20,7 +20,7 @@ class icinga::client::services (
     pattern    => $s_nrpe_pattern,
     enable     => true,
     hasrestart => true,
-    restart    => "service ${s_nrpe_server} reload",
+    restart    => "service ${s_nrpe} reload",
   }
 
 }

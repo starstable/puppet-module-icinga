@@ -12,20 +12,16 @@
 #
 class icinga::client::params {
   case $::osfamily {
-    'Debian': {
-      $package_libnagios_perl             = 'libnagios-plugin-perl'
-      $package_nagios_nrpe_server         = 'nagios-nrpe-server'
-      # Need to drop an APT pin for the plugins from backports
-      $package_nagios_plugins_basic       = 'nagios-plugins-basic'
-      $package_nagios_plugins_standard    = 'nagios-plugins-standard'
-      $package_nagios_plugins_contrib     = 'nagios-plugins-contrib'
-      $package_nagios_plugin_check_multi  = 'nagios-plugin-check-multi'
-      $service_nagios_nrpe_server         = 'nagios-nrpe-server'
-      $service_nagios_nrpe_server_pattern = 'nrpe'
+    'RedHat': {
+      $package_nagios_nrpe                = 'nrpe'
+      $package_nagios_plugins             = 'nagios-plugins'
+      $package_nagios_plugins_all         = 'nagios-plugins-all'
+      $service_nagios_nrpe                = 'nrpe'
+      $service_nagios_nrpe_pattern        = 'nrpe'
       $dir_nagios                         = '/etc/nagios'
       $dir_nrpe                           = "${dir_nagios}/nrpe.d"
       $file_nrpe_config                   = "${dir_nagios}/nrpe.cfg"
-      $dir_nagios_lib                     = '/usr/lib/nagios'
+      $dir_nagios_lib                     = '/usr/lib64/nagios'
       $dir_nagios_plugins                 = "${dir_nagios_lib}/plugins"
 
       # params below should equal ::icinga::server::params::$param

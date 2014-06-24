@@ -11,12 +11,9 @@
 # Copyright 2012, 2013 Nedap Steppingstone.
 #
 class icinga::client::packages (
-  $p_libnagios_perl            = $::icinga::client::package_libnagios_perl,
-  $p_nagios_nrpe_server        = $::icinga::client::package_nagios_nrpe_server,
-  $p_nagios_plugins_basic      = $::icinga::client::package_nagios_plugins_basic,
-  $p_nagios_plugins_standard   = $::icinga::client::package_nagios_plugins_standard,
-  $p_nagios_plugins_contrib    = $::icinga::client::package_nagios_plugins_contrib,
-  $p_nagios_plugin_check_multi = $::icinga::client::package_nagios_plugin_check_multi,
+  $p_nagios_nrpe               = $::icinga::client::package_nagios_nrpe_server,
+  $p_nagios_plugins            = $::icinga::client::package_nagios_plugins,
+  $p_nagios_plugins_all        = $::icinga::client::package_nagios_plugins_all,
 ) {
 
   package { $p_nagios_nrpe_server:
@@ -25,11 +22,8 @@ class icinga::client::packages (
   }
 
   package { [
-    $p_libnagios_perl,
-    $p_nagios_plugins_basic,
-    $p_nagios_plugins_standard,
-    $p_nagios_plugins_contrib,
-    $p_nagios_plugin_check_multi,
+    $p_nagios_plugins,
+    $p_nagios_plugins_all,
   ]:
     ensure  => latest,
   }
