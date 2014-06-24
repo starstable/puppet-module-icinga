@@ -12,7 +12,7 @@
 #
 class icinga::server::params {
   case $::osfamily {
-    'Debian': {
+    'RedHat': {
       $package_nrpe_plugin        = 'nagios-plugins-nrpe'
       $package_icinga             = 'icinga'
       $package_icinga_cgi         = 'icinga-gui'
