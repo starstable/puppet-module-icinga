@@ -23,10 +23,6 @@ class icinga::server::packages (
     ensure  => latest,
   }
 
-  package { $p_nagios_images:
-    ensure  => latest,
-  }
-
   package { [
     $p_icinga,
     $p_icinga_cgi,
