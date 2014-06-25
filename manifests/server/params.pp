@@ -21,6 +21,7 @@ class icinga::server::params {
       $package_icinga_idoutils_db = 'icinga-idoutils-libdbi-mysql'
       
       $service_icinga           = 'icinga'
+      $service_ido2db		= 'ido2db'
       $dir_icinga               = '/etc/icinga'
       $dir_nagios_plugins       = '/usr/lib64/nagios/plugins'
       $dir_objects              = "${dir_icinga}/objects"
@@ -28,6 +29,8 @@ class icinga::server::params {
       $dir_stylesheets          = "${dir_icinga}/stylesheets"
       $file_htpasswd            = "${dir_icinga}/htpasswd.users"
       $file_icingacfg           = "${dir_icinga}/icinga.cfg"
+      $file_idomodcfg           = "${dir_icinga}/idomod.cfg"
+      $file_ido2dbcfg           = "${dir_icinga}/ido2db.cfg"
       $file_resourcecfg         = "${dir_icinga}/resource.cfg"
       $file_cgicfg              = "${dir_icinga}/cgi.cfg"
       $dir_htdocs               = '/usr/share/icinga/htdocs'
@@ -54,7 +57,7 @@ class icinga::server::params {
       # icinga::server::configs exec's as well
       $command_file                                = '/var/lib/icinga/rw/icinga.cmd'
       $external_command_buffer_slots               = 32768
-      $lock_file                                   = $::lsbdistcodename ? {
+      $lock_file                                   = $::lsbdistcodename ? {       
         'squeeze' => '/var/run/icinga/icinga.pid',
         'wheezy'  => '/run/icinga/icinga.pid',
         default   => '/run/icinga/icinga.pid',
@@ -335,6 +338,65 @@ class icinga::server::params {
       $splunk_url                                            = undef
       $resource_file                                         = $file_resourcecfg
       $log_file                                              = $icinga_logfile
+      
+      # this is used to configure idomod.cfg
+      $instance_name					     = 'sse'
+      $output_type					     = 'unixsocket'
+      $output						     = '/var/spool/icinga/ido.sock'
+      $ido_tcp_port					     = 5668
+      $ido_use_ssl					     = 0
+      $output_buffer_items				     = 5000
+      $output_buffer_file				     = '/var/spool/icinga/idomod.tmp'
+      $file_rotation_interval				     = 14400
+      $file_rotation_command				     = 'rotate_ido_log'
+      $file_rotation_timeout				     = 60
+      $reconnect_interval				     = 15
+      $reconnect_warning_interval                            = 15
+      $data_processing_options				     = 67108669
+      $config_output_options				     = 2
+      $dump_customvar_status				     = 1
+      $ido_debug_level					     = '-1'
+      $ido_debug_verbosity				     = 2
+      $ido_debug_file					     = '/var/log/icinga/idomod.debug'
+      $ido_max_debug_file				     = 100000000
+
+      # this is used to configure ido2db.cfg      
+      $db_lock_file					     = '/var/run/ido2db.pid'
+      $ido2db_user					     = 'icinga'
+      $ido2db_group					     = 'icinga'
+      $socket_type					     = 'unix'
+      $socket_name					     = '/var/spool/icinga/ido.sock'
+      $socket_perm					     = '0750'
+      $ido2db_tcp_port					     = 5668
+      $ido2db_use_ssl					     = 0
+      $db_servertype					     = 'mysql'
+      $db_host						     = '127.0.0.1'
+      $db_port						     = 3306
+      $db_socket					     = '/var/lib/mysql/mysql.sock'
+      $db_name						     = 'icinga'
+      $db_prefix					     = 'icinga_'
+      $db_user						     = 'admin'
+      $db_pass						     = 'sekritpassword'
+      $max_systemcommands_age				     = 1440
+      $max_servicechecks_age				     = 1440
+      $max_hostchecks_age				     = 1440
+      $max_eventhandlers_age				     = 10080
+      $max_externalcommands_age				     = 10080
+      $max_logentries_age				     = 44640
+      $max_acknowledgements_age				     = 44640
+      $max_notifications_age				     = 44640
+      $max_contactnotifications_age			     = 44640
+      $max_contactnotificationmethods_age		     = 44640
+      $max_downtimehistory_age				     = 44640
+      $trim_db_interval					     = 3600
+      $housekeeping_thread_startup_delay		     = 300
+      $ido2db_debug_level				     = '-1'
+      $ido2db_debug_verbosity				     = 2
+      $ido2db_debug_file				     = '/var/log/icinga/ido2db.debug'
+      $ido2db_max_debug_file_size			     = 100000000
+      $debug_readable_timestamp				     = 1
+      $oci_errors_to_syslog				     = 1
+      $oracle_trace_level				     = 0
     }
     default: {
       fail("\$osfamily ${::osfamily} is not supported by the Icinga module.")

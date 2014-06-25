@@ -12,6 +12,7 @@
 #
 class icinga::server::services(
   $s_icinga =  $::icinga::server::service_icinga,
+  $s_ido2db =  $::icinga::server::service_ido2db,
 ){
 
   service { $s_icinga:
@@ -19,6 +20,14 @@ class icinga::server::services(
     enable     => true,
     hasrestart => true,
     restart    => "service ${s_icinga} reload",
+    hasstatus  => true,
+  }
+  
+  service { $s_ido2db:
+    ensure     => running,
+    enable     => true,
+    hasrestart => true,
+    restart    => "service ${s_ido2db} restart",
     hasstatus  => true,
   }
 }
