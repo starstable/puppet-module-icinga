@@ -38,7 +38,6 @@ class icinga::server::configs (
   $webserver_group            = $::icinga::server::webserver_group,
   # following is used to configure icinga.cfg
   $icinga_logfile                              = $::icinga::server::icinga_logfile,
-  $dir_nagios_plugins_config                   = $::icinga::server::dir_nagios_plugins_config,
   $object_cache_file                           = $::icinga::server::object_cache_file,
   $precached_object_file                       = $::icinga::server::precached_object_file,
   $status_file                                 = $::icinga::server::status_file,

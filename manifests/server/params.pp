@@ -44,7 +44,6 @@ class icinga::server::params {
       # following is used to configure icinga.cfg
       $dir_icinga_cache                            = '/var/cache/icinga'
       $icinga_logfile                              = "${dir_icinga_log}/icinga.log"
-      $dir_nagios_plugins_config                   = '/etc/nagios-plugins/config'
       $object_cache_file                           = "${dir_icinga_cache}/objects.cache"
       $precached_object_file                       = "${dir_icinga_cache}/objects.precache"
       $status_file                                 = '/var/lib/icinga/status.dat'

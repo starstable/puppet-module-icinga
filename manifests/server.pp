@@ -65,7 +65,6 @@ class icinga::server (
 
   # icinga.cfg
   $icinga_logfile                              = $::icinga::server::params::icinga_logfile,
-  $dir_nagios_plugins_config                   = $::icinga::server::params::dir_nagios_plugins_config,
   $object_cache_file                           = $::icinga::server::params::object_cache_file,
   $precached_object_file                       = $::icinga::server::params::precached_object_file,
   $status_file                                 = $::icinga::server::params::status_file,
