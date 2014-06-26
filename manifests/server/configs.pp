@@ -705,7 +705,7 @@ class icinga::server::configs (
   		module_name => 'idomod',
   		module_type => 'neb',
   		path        => '/usr/lib64/icinga/idomod.so',
-  		args        => 'config=/etc/icinga/idomod.cfg',
+  		args        => 'config_file=/etc/icinga/idomod.cfg',
   	},
   }
 }
