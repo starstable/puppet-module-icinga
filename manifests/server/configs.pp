@@ -698,4 +698,14 @@ class icinga::server::configs (
 
   Icinga::Resource <||>
   Icinga::Resource <<||>>
+  
+  icinga::resource {'idomod':
+  	type          => 'module',
+  	icinga_config => {
+  		module_name => 'idomod',
+  		module_type => 'neb',
+  		path        => '/usr/lib64/icinga/idomod.so',
+  		args        => 'config=/etc/icinga/idomod.cfg',
+  	},
+  }
 }
